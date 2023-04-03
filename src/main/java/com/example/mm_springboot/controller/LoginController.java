@@ -26,6 +26,7 @@ public class LoginController {
     @RequestMapping("/user/login")
     public CommonResult<String> userLogin(@RequestParam("account") String account, @RequestParam("password") String password) {
         User user = userService.queryUser(account, password);
+
         if(user != null) {
             return new CommonResult(200, "true",user);
         } else {

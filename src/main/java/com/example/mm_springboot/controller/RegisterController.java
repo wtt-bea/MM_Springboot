@@ -4,11 +4,15 @@ import com.example.mm_springboot.model.CommonResult;
 import com.example.mm_springboot.model.User;
 import com.example.mm_springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ClassUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -34,8 +38,8 @@ public class RegisterController {
      * @param planet
      * @return
      */
-    @GetMapping("/user/register")
-    public CommonResult doRegister(@RequestParam("account") String account,  @RequestParam("password") String password, @RequestParam("name") String name,@RequestParam("planet") String planet) {
+    @RequestMapping("/user/register")
+    public CommonResult Register(@RequestParam("account") String account, @RequestParam("password") String password, @RequestParam("name") String name, @RequestParam("planet") String planet, @RequestParam("file")MultipartFile file) {
         User user = new User();
         user.setAccount(account);
         user.setPassword(password);
@@ -66,6 +70,27 @@ public class RegisterController {
         }
         user.setAddress(address);
 
+        //储存图片
+        String staticPath = ClassUtils.getDefaultClassLoader().getResource("static").getPath();
+        String fileName = file.getOriginalFilename();
+
+        String url_path = "images" + File.separator + fileName;
+
+        String savePath = staticPath + File.separator + url_path;
+
+        String visitPath="static/"+url_path;
+        File saveFile = new File(savePath);
+        if(!saveFile.exists()){
+            saveFile.mkdirs();
+        }
+        try{
+            file.transferTo(saveFile);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+        user.setAvatar(visitPath);
+
         int res = 0;
         try {
             res = userService.insertUser(user);
@@ -79,5 +104,4 @@ public class RegisterController {
             return new CommonResult(401, "false");
         }
     }
-    //保存验证码和时间
 }

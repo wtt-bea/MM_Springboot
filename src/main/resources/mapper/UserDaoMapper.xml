@@ -10,6 +10,6 @@
         select * from user where account = #{account} and password = #{password};
     </select>
     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="account">
-        insert into user(account, password, name, planet, address, age) values(#{account}, #{password}, #{name}, #{planet}, #{address}, #{age});
+        insert into user(account, password, name, planet, address, age,Avatar) values(#{account}, #{password}, #{name}, #{planet}, #{address}, #{age}, #{avatar});
     </insert>
 </mapper>

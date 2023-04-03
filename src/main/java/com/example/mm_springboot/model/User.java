@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 //@AllArgsConstructor
 public class User {
 
+    private String avatar;
     private String account;
     private String password;
     private String name;
@@ -16,12 +17,13 @@ public class User {
     private String address;
     private String age;
 
-    public User(String account, String password, String name, String planet, String address, String age) {
+    public User(String account, String password, String name, String planet, String address, String age, String avatar) {
         this.account = account;
         this.password = password;
         this.name = name;
         this.planet = planet;
         this.address = address;
         this.age = age;
+        this.avatar = avatar;
     }
 }

@@ -8,4 +8,5 @@ public interface UserService {
     User queryUser(String account, String password);
 
     int insertUser(User user);
+
 }
