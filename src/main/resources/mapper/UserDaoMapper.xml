@@ -9,7 +9,22 @@
     <select id="queryUser"  resultMap="BaseResult">
         select * from user where account = #{account} and password = #{password};
     </select>
+    <select id="queryPlanet"  resultMap="BaseResult">
+        select * from user where account = #{account};
+    </select>
     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="account">
         insert into user(account, password, name, planet, address, age,Avatar) values(#{account}, #{password}, #{name}, #{planet}, #{address}, #{age}, #{avatar});
     </insert>
+<!--    <insert id="insertPost" parameterType="Post" useGeneratedKeys="true" keyProperty="post_id">-->
+<!--        insert into post(post_id, account, date, context, like_number) values(#{post_id}, #{account}, #{date}, #{context}, #{like_number});-->
+<!--    </insert>-->
+<!--    <insert id="insertLike" parameterType="Like" useGeneratedKeys="true" keyProperty="like_id">-->
+<!--        insert into like(like_id, post_id, account) values(#{like_id}, #{post_id}, #{account});-->
+<!--    </insert>-->
+<!--    <insert id="insertPost_pic" parameterType="Post_pic" useGeneratedKeys="true" keyProperty="pic_id">-->
+<!--        insert into post_pic(pic_id, post_id, url) values(#{pic_id}, #{post_id}, #{url});-->
+<!--    </insert>-->
+<!--    <insert id="insertComment" parameterType="Comment" useGeneratedKeys="true" keyProperty="comment_id">-->
+<!--        insert into comment(comment_id, post_id, account, date) values(#{comment_id}, #{post_id}, #{account},#{date});-->
+<!--    </insert>-->
 </mapper>

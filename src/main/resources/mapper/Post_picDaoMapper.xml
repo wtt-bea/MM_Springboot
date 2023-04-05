@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mm_springboot.dao.Post_picDao">
+    <resultMap id="BaseResult" type="com.example.mm_springboot.model.Post_pic">
+        <result column="pic_id" property="pic_id" jdbcType="VARCHAR"/>
+        <result column="post_id" property="post_id" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertPic" parameterType="Post_pic" useGeneratedKeys="true" keyProperty="pic_id">
+        insert into post_pic(pic_id, post_id, url) values(#{pic_id}, #{post_id}, #{url});
+    </insert>
+</mapper>

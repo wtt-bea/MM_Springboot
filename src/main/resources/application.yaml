@@ -8,6 +8,10 @@ spring:
     password: 123456
   jackson:
     time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.example.mm_springboot.model

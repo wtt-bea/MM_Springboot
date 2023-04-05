@@ -9,4 +9,6 @@ public interface UserService {
 
     int insertUser(User user);
 
+    User queryPlanet(String account);
+
 }

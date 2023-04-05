@@ -22,4 +22,10 @@ public class UserServiceImpl implements UserService {
         return userDao.insertUser(user);
     }
 
+    @Override
+    public User queryPlanet(String account) {
+        return userDao.queryPlanet(account);
+    }
+
+
 }

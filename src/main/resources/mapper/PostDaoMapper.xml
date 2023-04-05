@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mm_springboot.dao.PostDao">
+    <resultMap id="BaseResult" type="com.example.mm_springboot.model.Post">
+        <result column="post_id" property="post_id" jdbcType="VARCHAR"/>
+        <result column="account" property="account" jdbcType="VARCHAR"/>
+        <result column="context" property="context" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertPost" parameterType="Post" useGeneratedKeys="true" keyProperty="post_id">
+        insert into post(post_id, account, date, context, like_number, comment_number) values(#{post_id}, #{account}, #{date}, #{context}, #{like_number}, #{comment_number});
+    </insert>
+
+    <select id="receive" resultType="Post">
+        SELECT u.name,p.* FROM user u, post p WHERE p.account = u.account AND u.planet = #{planet} ORDER BY p.date DESC;
+    </select>
+</mapper>
