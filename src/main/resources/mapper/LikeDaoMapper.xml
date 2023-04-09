@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mm_springboot.dao.LikeDao">
+    <resultMap id="BaseResult" type="com.example.mm_springboot.model.Like">
+        <result column="post_id" property="post_id" jdbcType="VARCHAR"/>
+        <result column="account" property="account" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryLike"  resultMap="BaseResult">
+        select * from `like` where post_id = #{post_id} and account = #{account};
+    </select>
+
+    <insert id="insertLike" parameterType="Like" useGeneratedKeys="true" keyProperty="like_id">
+        insert into like(post_id, account) values(#{post_id}, #{account});
+    </insert>
+</mapper>

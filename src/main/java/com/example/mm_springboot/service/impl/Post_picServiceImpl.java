@@ -7,6 +7,7 @@ import com.example.mm_springboot.service.Post_picService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class Post_picServiceImpl implements Post_picService {
@@ -17,4 +18,6 @@ public class Post_picServiceImpl implements Post_picService {
     public int insertPic(Post_pic post_pic) {
         return post_picDao.insertPic(post_pic);
     }
+
+    public List<Post_pic> queryImage(){ return post_picDao.queryImage();}
 }

@@ -10,4 +10,8 @@
     <insert id="insertPic" parameterType="Post_pic" useGeneratedKeys="true" keyProperty="pic_id">
         insert into post_pic(pic_id, post_id, url) values(#{pic_id}, #{post_id}, #{url});
     </insert>
+
+    <select id="queryImage"  resultMap="BaseResult">
+        select * from post_pic;
+    </select>
 </mapper>

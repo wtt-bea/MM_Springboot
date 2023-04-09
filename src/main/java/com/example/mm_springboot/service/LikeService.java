@@ -6,5 +6,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface LikeService {
     int insertLike(Like like);
-
+    String queryLike(String post_id, String account);
 }

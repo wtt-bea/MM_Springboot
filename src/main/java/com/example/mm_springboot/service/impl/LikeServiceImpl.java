@@ -15,4 +15,9 @@ public class LikeServiceImpl implements LikeService {
     public int insertLike(Like like) {
         return likeDao.insertLike(like);
     }
+
+    @Override
+    public String queryLike(String post_id, String account) {
+        return likeDao.queryLike(post_id,account);
+    }
 }

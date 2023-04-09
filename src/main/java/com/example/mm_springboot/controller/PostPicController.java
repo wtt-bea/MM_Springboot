@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class PostPicController {
@@ -35,8 +36,8 @@ public class PostPicController {
         String fileName = file.getOriginalFilename();
 
         String url_path = "images" + File.separator + fileName;
-
         String savePath = staticPath + File.separator + url_path;
+        String db_path = "http://172.20.10.5/images/" + fileName;
         File saveFile = new File(savePath);
         if(!saveFile.exists()){
             saveFile.mkdirs();
@@ -47,7 +48,7 @@ public class PostPicController {
             e.printStackTrace();
         }
 
-        post_pic.setUrl(url_path);
+        post_pic.setUrl(db_path);
 
 
         int res = 0;
@@ -63,4 +64,22 @@ public class PostPicController {
             return new CommonResult(401, "false");
         }
     }
+
+    @RequestMapping("/post_pic/queryImage")
+    public CommonResult queryImage() {
+        List<Post_pic> res=null;
+        try {
+            res = post_picService.queryImage();
+            System.out.println(res);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if(res != null) {
+            return new CommonResult(200, "true",res);
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
+
+
 }

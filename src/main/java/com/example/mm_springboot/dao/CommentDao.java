@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface CommentDao {
-    // 存储帖子信息
+    // 存储评论信息
     int insertComment(Comment comment);
 }
