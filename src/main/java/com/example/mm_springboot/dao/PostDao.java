@@ -12,4 +12,7 @@ public interface PostDao {
     // 存储帖子信息
     int insertPost(Post post);
     List<PostExt> receive(@Param("planet") String planet);
+
+    int postlike(@Param("post_id") String post_id);
+    int postunlike(@Param("post_id") String post_id);
 }

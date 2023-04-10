@@ -5,6 +5,7 @@ import com.example.mm_springboot.service.LikeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class LikeServiceImpl implements LikeService {
@@ -17,7 +18,12 @@ public class LikeServiceImpl implements LikeService {
     }
 
     @Override
-    public String queryLike(String post_id, String account) {
-        return likeDao.queryLike(post_id,account);
+    public int deleteLike(String post_id, String account) {
+        return likeDao.deleteLike(post_id,account);
+    }
+
+    @Override
+    public List<Like> queryLike(String account) {
+        return likeDao.queryLike(account);
     }
 }

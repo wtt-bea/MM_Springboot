@@ -12,4 +12,6 @@ public interface PostService {
 
     List<PostExt> receive(String planet);
 
+    int postlike(String post_id);
+    int postunlike(String post_id);
 }

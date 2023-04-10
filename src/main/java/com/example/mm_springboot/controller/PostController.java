@@ -76,5 +76,47 @@ public class PostController {
         }
 
     }
+
+    /**
+     * 给帖子点赞
+     * @param post_id
+     * @return
+     */
+    @RequestMapping("/post/postlike")
+    public CommonResult postlike(@RequestParam("post_id") String post_id) {
+        int res = 0;
+        try {
+            res = postService.postlike(post_id);
+            System.out.println("postlike"+res);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if(res == 1) {
+            return new CommonResult(200, "true");
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 给帖子取消点赞
+     * @param post_id
+     * @return
+     */
+    @RequestMapping("/post/postunlike")
+    public CommonResult postunlike(@RequestParam("post_id") String post_id) {
+        int res = 0;
+        try {
+            res = postService.postunlike(post_id);
+            System.out.println("postunlike"+res);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if(res == 1) {
+            return new CommonResult(200, "true");
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
 }
 

@@ -3,8 +3,11 @@ package com.example.mm_springboot.service;
 import com.example.mm_springboot.model.Like;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface LikeService {
     int insertLike(Like like);
-    String queryLike(String post_id, String account);
+    int deleteLike(String post_id, String account);
+    List<Like> queryLike(String account);
 }

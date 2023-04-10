@@ -22,4 +22,10 @@ public class PostServiceImpl implements PostService {
     public List<PostExt> receive(String planet) {
         return postDao.receive(planet);
     }
+
+    @Override
+    public int postlike(String post_id){return postDao.postlike(post_id);}
+
+    @Override
+    public int postunlike(String post_id){return postDao.postunlike(post_id);}
 }

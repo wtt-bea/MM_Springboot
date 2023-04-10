@@ -11,6 +11,14 @@
         insert into post(post_id, account, date, context, like_number, comment_number) values(#{post_id}, #{account}, #{date}, #{context}, #{like_number}, #{comment_number});
     </insert>
 
+    <update id="postlike" parameterType="Post" useGeneratedKeys="true" keyProperty="post_id">
+        UPDATE post SET like_number = like_number + 1 WHERE post_id = #{post_id}
+    </update>
+
+    <update id="postunlike" parameterType="Post" useGeneratedKeys="true" keyProperty="post_id">
+        UPDATE post SET like_number = like_number - 1 WHERE post_id = #{post_id}
+    </update>
+
     <select id="receive" resultType="Post">
         SELECT u.name,p.* FROM user u, post p WHERE p.account = u.account AND u.planet = #{planet} ORDER BY p.date DESC;
     </select>

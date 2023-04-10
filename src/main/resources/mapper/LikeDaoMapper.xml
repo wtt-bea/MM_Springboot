@@ -7,10 +7,14 @@
     </resultMap>
 
     <select id="queryLike"  resultMap="BaseResult">
-        select * from `like` where post_id = #{post_id} and account = #{account};
+        select * from `like` where account = #{account};
     </select>
 
     <insert id="insertLike" parameterType="Like" useGeneratedKeys="true" keyProperty="like_id">
-        insert into like(post_id, account) values(#{post_id}, #{account});
+        insert into `like`(post_id, account) values(#{post_id}, #{account});
     </insert>
+
+    <delete id="deleteLike" parameterType="Like">
+        delete from `like` where post_id = #{post_id} and account = #{account};
+    </delete>
 </mapper>

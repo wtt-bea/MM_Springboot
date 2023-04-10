@@ -26,7 +26,8 @@ public class LikeController {
     @RequestMapping("/like/insertLike")
     public CommonResult insertLike(@RequestParam("post_id") String post_id, @RequestParam("account") String account) {
         Like like = new Like();
-
+        like.setPost_id(post_id);
+        like.setAccount(account);
         int res = 0;
         try {
             res = likeService.insertLike(like);
@@ -37,28 +38,49 @@ public class LikeController {
         if(res == 1) {
             return new CommonResult(200, "true");
         } else {
-            System.out.println("jiqa"+res);
+            System.out.println("insertlike"+res);
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 取消赞
+     * @param post_id
+     * @param account
+     * @return
+     */
+    @RequestMapping("/like/deleteLike")
+    public CommonResult deleteLike(@RequestParam("post_id") String post_id, @RequestParam("account") String account) {
+        int res = 0;
+        try {
+            res = likeService.deleteLike(post_id, account);
+            System.out.println("deleteLike"+res);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if(res == 1) {
+            return new CommonResult(200, "true");
+        } else {
             return new CommonResult(401, "false");
         }
     }
 
     /**
      * 查询是否点赞
-     * @param post_id
      * @param account
-     * @return 返回0没有点赞 1点赞
+     * @return 返回所有点赞列表
      */
     @RequestMapping("/like/queryLike")
-    public CommonResult queryLike(@RequestParam("post_id") String post_id,@RequestParam("account") String account) {
-        String res=null;
+    public CommonResult queryLike(@RequestParam("account") String account) {
+        List<Like> res = null;
         try {
-            res = likeService.queryLike(post_id, account);
+            res = likeService.queryLike(account);
             System.out.println("querylike" + res);
         } catch (Exception e) {
             System.out.println(e);
         }
-        if (res != "null") {
-            return new CommonResult(200, "true");
+        if (res != null) {
+            return new CommonResult(200, "true",res);
         }else{
             return new CommonResult(401, "false");
         }
