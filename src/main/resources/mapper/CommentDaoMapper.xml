@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mm_springboot.dao.CommentDao">
+    <resultMap id="BaseResult" type="com.example.mm_springboot.model.Comment">
+        <result column="post_id" property="post_id" jdbcType="VARCHAR"/>
+        <result column="account" property="account" jdbcType="VARCHAR"/>
+        <result column="context" property="context" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertComment" parameterType="Comment" useGeneratedKeys="true" keyProperty="comment_id">
+        insert into `comment`(post_id, account, date, context) values(#{post_id}, #{account}, #{date}, #{context});
+    </insert>
+
+    <select id="queryComment" resultType="Comment">
+        SELECT u.name,c.* FROM user u, comment c WHERE c.account = u.account AND c.post_id = #{post_id} ORDER BY c.date;
+    </select>
+</mapper>

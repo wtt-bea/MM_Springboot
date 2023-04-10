@@ -22,4 +22,8 @@
     <select id="receive" resultType="Post">
         SELECT u.name,p.* FROM user u, post p WHERE p.account = u.account AND u.planet = #{planet} ORDER BY p.date DESC;
     </select>
+
+    <update id="postAddcomment" parameterType="Post" useGeneratedKeys="true" keyProperty="post_id">
+        UPDATE post SET comment_number = comment_number + 1 WHERE post_id = #{post_id}
+    </update>
 </mapper>
