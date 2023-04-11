@@ -73,7 +73,6 @@ public class PostController {
         }else{
             return new CommonResult(401, "false");
         }
-
     }
 
     /**
@@ -135,6 +134,27 @@ public class PostController {
         if(res == 1) {
             return new CommonResult(200, "true");
         } else {
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 获取个人的帖子
+     * @param account
+     * @return 所有帖子
+     */
+    @RequestMapping("/post/postHome")
+    public CommonResult postHome(@RequestParam("account") String planet) {
+        List<Post> res = null;
+        try {
+            res = postService.postHome(planet);
+            System.out.println("postHome" + res);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if (res != null) {
+            return new CommonResult(200, "true", res);
+        }else{
             return new CommonResult(401, "false");
         }
     }

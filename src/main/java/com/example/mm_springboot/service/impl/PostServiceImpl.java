@@ -23,6 +23,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<Post> postHome(String account) {
+        return postDao.postHome(account);
+    }
+
+    @Override
     public int postlike(String post_id){return postDao.postlike(post_id);}
 
     @Override

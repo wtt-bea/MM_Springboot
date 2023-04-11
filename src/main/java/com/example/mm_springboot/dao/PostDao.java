@@ -12,6 +12,7 @@ public interface PostDao {
     int insertPost(Post post);
     List<Post> receive(@Param("planet") String planet);
 
+    List<Post> postHome(@Param("account") String account);
     int postlike(@Param("post_id") String post_id);
     int postunlike(@Param("post_id") String post_id);
 
