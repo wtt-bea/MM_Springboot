@@ -10,6 +10,9 @@ public interface UserDao {
     int insertUser(User user);
     // 根据用户名和密码查询用户是否存在
     User queryUser(@Param("account") String account, @Param("password")String password);
-
     User queryPlanet(@Param("account") String account);
+    User queryuserInfo(@Param("account") String account);
+    int updateUser(@Param("account") String account, @Param("name") String name, @Param("planet") String planet, @Param("address") String address,@Param("visitPath") String visitPath);
+    User isClock(@Param("account") String account);
+    int updateClock(@Param("account") String account);
 }

@@ -8,7 +8,7 @@
     </resultMap>
 
     <insert id="insertPost" parameterType="Post" useGeneratedKeys="true" keyProperty="post_id">
-        insert into post(post_id, account, date, context, like_number, comment_number) values(#{post_id}, #{account}, #{date}, #{context}, #{like_number}, #{comment_number});
+        INSERT INTO post(post_id, account, date, context, like_number, comment_number) VALUES(#{post_id}, #{account}, #{date}, #{context}, #{like_number}, #{comment_number});
     </insert>
 
     <update id="postlike" parameterType="Post" useGeneratedKeys="true" keyProperty="post_id">

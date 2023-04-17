@@ -11,4 +11,11 @@ public interface UserService {
 
     User queryPlanet(String account);
 
+    User queryuserInfo(String account);
+
+    int updateUser(String account, String name, String planet, String address, String visitPath);
+
+    User isClock(String account);
+
+    int updateClock(String account);
 }

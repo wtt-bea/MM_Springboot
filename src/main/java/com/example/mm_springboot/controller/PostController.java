@@ -144,10 +144,10 @@ public class PostController {
      * @return 所有帖子
      */
     @RequestMapping("/post/postHome")
-    public CommonResult postHome(@RequestParam("account") String planet) {
+    public CommonResult postHome(@RequestParam("account") String account) {
         List<Post> res = null;
         try {
-            res = postService.postHome(planet);
+            res = postService.postHome(account);
             System.out.println("postHome" + res);
         } catch (Exception e) {
             System.out.println(e);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mm_springboot.dao.TodoListDao">
+    <resultMap id="BaseResult" type="com.example.mm_springboot.model.TodoList">
+        <result column="account" property="account" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertTodo" parameterType="TodoList" useGeneratedKeys="true" keyProperty="list_id">
+        INSERT INTO todolist(account, context, finish) VALUES(#{account}, #{context}, 0);
+    </insert>
+
+    <update id="updateTodo" parameterType="TodoList" useGeneratedKeys="true">
+        UPDATE todolist SET finish = 1 WHERE list_id = #{list_id};
+    </update>
+
+    <select id="queryTodo" resultType="TodoList">
+        SELECT * FROM todolist WHERE account = #{account} ORDER BY finish;
+    </select>
+
+    <delete id="deleteTodo" parameterType="TodoList">
+        DELETE FROM todolist WHERE list_id = #{list_id};
+    </delete>
+</mapper>

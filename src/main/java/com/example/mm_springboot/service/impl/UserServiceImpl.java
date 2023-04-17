@@ -27,5 +27,24 @@ public class UserServiceImpl implements UserService {
         return userDao.queryPlanet(account);
     }
 
+    @Override
+    public User queryuserInfo(String account) {
+        return userDao.queryuserInfo(account);
+    }
+
+    @Override
+    public int updateUser(String account, String name, String planet, String address, String visitPath) {
+        return userDao.updateUser(account,name,planet,address,visitPath);
+    }
+
+    @Override
+    public User isClock(String account){
+        return userDao.isClock(account);
+    }
+
+    @Override
+    public int updateClock(String account){
+        return userDao.updateClock(account);
+    }
 
 }

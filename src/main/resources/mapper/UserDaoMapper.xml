@@ -7,24 +7,24 @@
     </resultMap>
 
     <select id="queryUser"  resultMap="BaseResult">
-        select * from user where account = #{account} and password = #{password};
+        SELECT * FROM user WHERE account = #{account} AND password = #{password};
     </select>
     <select id="queryPlanet"  resultMap="BaseResult">
-        select * from user where account = #{account};
+        SELECT * FROM user WHERE account = #{account};
+    </select>
+    <select id="queryuserInfo"  resultMap="BaseResult">
+        SELECT * FROM user WHERE account = #{account};
     </select>
     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="account">
-        insert into user(account, password, name, planet, address, age,Avatar) values(#{account}, #{password}, #{name}, #{planet}, #{address}, #{age}, #{avatar});
+        INSERT INTO user(account, password, name, planet, address, age,Avatar, clock, clocktime) VALUES(#{account}, #{password}, #{name}, #{planet}, #{address}, #{age}, #{avatar}, 0, 0);
     </insert>
-<!--    <insert id="insertPost" parameterType="Post" useGeneratedKeys="true" keyProperty="post_id">-->
-<!--        insert into post(post_id, account, date, context, like_number) values(#{post_id}, #{account}, #{date}, #{context}, #{like_number});-->
-<!--    </insert>-->
-<!--    <insert id="insertLike" parameterType="Like" useGeneratedKeys="true" keyProperty="like_id">-->
-<!--        insert into like(like_id, post_id, account) values(#{like_id}, #{post_id}, #{account});-->
-<!--    </insert>-->
-<!--    <insert id="insertPost_pic" parameterType="Post_pic" useGeneratedKeys="true" keyProperty="pic_id">-->
-<!--        insert into post_pic(pic_id, post_id, url) values(#{pic_id}, #{post_id}, #{url});-->
-<!--    </insert>-->
-<!--    <insert id="insertComment" parameterType="Comment" useGeneratedKeys="true" keyProperty="comment_id">-->
-<!--        insert into comment(comment_id, post_id, account, date) values(#{comment_id}, #{post_id}, #{account},#{date});-->
-<!--    </insert>-->
+    <update id="updateUser" parameterType="User" useGeneratedKeys="true">
+        UPDATE user SET name = #{name}, address = #{address}, planet = #{planet},Avatar = #{visitPath} WHERE account = #{account};
+    </update>
+    <select id="isClock"  resultMap="BaseResult">
+        SELECT * FROM user WHERE account = #{account};
+    </select>
+    <update id="updateClock" parameterType="User" useGeneratedKeys="true">
+        UPDATE user SET clock = 1, clocktime = clocktime + 1 WHERE account = #{account};
+    </update>
 </mapper>
