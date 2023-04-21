@@ -13,6 +13,7 @@ public interface UserDao {
     User queryPlanet(@Param("account") String account);
     User queryuserInfo(@Param("account") String account);
     int updateUser(@Param("account") String account, @Param("name") String name, @Param("planet") String planet, @Param("address") String address,@Param("visitPath") String visitPath);
+    int updateUsers(@Param("account") String account, @Param("name") String name, @Param("planet") String planet, @Param("address") String address);
     User isClock(@Param("account") String account);
     int updateClock(@Param("account") String account);
 }

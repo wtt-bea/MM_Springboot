@@ -21,6 +21,9 @@
     <update id="updateUser" parameterType="User" useGeneratedKeys="true">
         UPDATE user SET name = #{name}, address = #{address}, planet = #{planet},Avatar = #{visitPath} WHERE account = #{account};
     </update>
+    <update id="updateUsers" parameterType="User" useGeneratedKeys="true">
+        UPDATE user SET name = #{name}, address = #{address}, planet = #{planet} WHERE account = #{account};
+    </update>
     <select id="isClock"  resultMap="BaseResult">
         SELECT * FROM user WHERE account = #{account};
     </select>

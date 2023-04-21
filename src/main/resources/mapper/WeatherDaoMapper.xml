@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mm_springboot.dao.WeatherDao">
+    <resultMap id="BaseResult" type="com.example.mm_springboot.model.Weather">
+        <result column="planet" property="planet" jdbcType="VARCHAR"/>
+        <result column="num" property="num" jdbcType="VARCHAR"/>
+        <result column="temperature" property="temperature" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="queryWeather" resultMap="BaseResult">
+        SELECT * FROM weather WHERE planet = #{planet};
+    </select>
+</mapper>

@@ -38,6 +38,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int updateUsers(String account, String name, String planet, String address) {
+        return userDao.updateUsers(account,name,planet,address);
+    }
+
+    @Override
     public User isClock(String account){
         return userDao.isClock(account);
     }

@@ -14,6 +14,7 @@ public interface UserService {
     User queryuserInfo(String account);
 
     int updateUser(String account, String name, String planet, String address, String visitPath);
+    int updateUsers(String account, String name, String planet, String address);
 
     User isClock(String account);
 

@@ -13,7 +13,6 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
@@ -22,7 +21,7 @@ import java.util.Objects;
  * 用户登录
  */
 @RestController
-public class userController {
+public class UserController {
     @Resource
     private UserService userService;
 
@@ -155,9 +154,12 @@ public class userController {
     }
 
     /**
-     * 更新用户信息
+     * 更新用户信息(包括头像)
+     * @param account
+     * @param date
      * @param name
      * @param planet
+     * @param file
      * @return
      */
     @RequestMapping("/user/updateUser")
@@ -209,6 +211,49 @@ public class userController {
             return new CommonResult(200, "true");
         } else {
             // 用户名已存在
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 更新用户信息（不包括头像）
+     * @param account
+     * @param date
+     * @param name
+     * @param planet
+     * @return
+     */
+    @RequestMapping("/user/updateUsers")
+    public CommonResult updateUsers(@RequestParam("account") String account,@RequestParam("date") String date, @RequestParam("name") String name, @RequestParam("planet") String planet) {
+        // 获取当前时间并格式化设置随机地址
+        String timeStamp = date;
+        int data_1 = Integer.parseInt (String.valueOf(timeStamp.charAt(15)));
+        System.out.println(data_1);
+        char data_2 = timeStamp.charAt(17);
+        System.out.println(data_2);
+        char data_3 = timeStamp.charAt(18);
+        System.out.println(data_3);
+        if(Objects.equals(planet, "焦虑星")){
+            address = "焦虑星" + addresslist1[data_1] + data_2 + data_3 +"号";
+        } else if (Objects.equals(planet, "倦怠星")) {
+            address = "倦怠星" + addresslist2[data_1] + data_2 + data_3 +"号";
+        }else if (Objects.equals(planet, "失落星")) {
+            address = "失落星" + addresslist3[data_1] + data_2 + data_3 +"号";
+        }else if (Objects.equals(planet, "不开星")) {
+            address = "不开星" + addresslist4[data_1] + data_2 + data_3 +"号";
+        }else if (Objects.equals(planet, "痛苦星")) {
+            address = "痛苦星" + addresslist5[data_1] + data_2 + data_3 +"号";
+        }
+
+        int res = 0;
+        try {
+            res = userService.updateUsers(account,name,planet,address);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if(res == 1) {
+            return new CommonResult(200, "true");
+        } else {
             return new CommonResult(401, "false");
         }
     }
