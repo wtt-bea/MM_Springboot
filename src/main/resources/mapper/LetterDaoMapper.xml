@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mm_springboot.dao.LetterDao">
+    <resultMap id="BaseResult" type="com.example.mm_springboot.model.Letter">
+        <result column="letter_id" property="letter_id" jdbcType="VARCHAR"/>
+        <result column="account" property="account" jdbcType="VARCHAR"/>
+        <result column="stamp" property="stamp" jdbcType="VARCHAR"/>
+        <result column="recipient" property="recipient" jdbcType="VARCHAR"/>
+        <result column="context" property="context" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertLetter" parameterType="Letter" useGeneratedKeys="true" keyProperty="letter_id">
+        INSERT INTO letter(letter_id, account, stamp, recipient, context) VALUES(#{letter_id}, #{account}, #{stamp}, #{recipient}, #{context});
+    </insert>
+
+    <select id="queryLetter" resultType="Letter">
+        SELECT * FROM letter WHERE recipient = #{recipient} ORDER BY letter_id DESC;
+    </select>
+
+    <select id="queryOneLetter" resultType="Letter">
+        SELECT * FROM letter WHERE recipient = "" AND account!=#{account} LIMIT 1;
+    </select>
+
+    <update id="insertRecipient">
+        UPDATE letter SET recipient = #{account} WHERE letter_id = #{letter_id};
+    </update>
+
+</mapper>
