@@ -21,7 +21,6 @@ public class WeatherController {
     @RequestMapping("/weather/weatherquery")
     public CommonResult<String> queryWeather(@RequestParam("planet") String planet) {
         Weather weather = weatherService.queryWeather(planet);
-        System.out.println(weather);
         if(weather!=null){
             return new CommonResult(200, "true",weather);
         }else{

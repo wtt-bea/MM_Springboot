@@ -10,11 +10,11 @@
     </resultMap>
 
     <insert id="insertLetter" parameterType="Letter" useGeneratedKeys="true" keyProperty="letter_id">
-        INSERT INTO letter(letter_id, account, stamp, recipient, context) VALUES(#{letter_id}, #{account}, #{stamp}, #{recipient}, #{context});
+        INSERT INTO letter(letter_id, account, stamp, recipient, context,date) VALUES(#{letter_id}, #{account}, #{stamp}, #{recipient}, #{context},#{date});
     </insert>
 
     <select id="queryLetter" resultType="Letter">
-        SELECT * FROM letter WHERE recipient = #{recipient} ORDER BY letter_id DESC;
+        SELECT l.*,u.name FROM user u, letter l WHERE l.account = u.account AND l.recipient = #{recipient} ORDER BY l.letter_id DESC;
     </select>
 
     <select id="queryOneLetter" resultType="Letter">

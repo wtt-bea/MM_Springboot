@@ -39,7 +39,6 @@ public class CommentController {
         int res = 0;
         try {
             res = commentService.insertComment(comment);
-            System.out.println("jia"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -61,7 +60,6 @@ public class CommentController {
         List<Comment> res = null;
         try {
             res = commentService.queryComment(post_id);
-            System.out.println("queryComment" + res);
         } catch (Exception e) {
             System.out.println(e);
         }

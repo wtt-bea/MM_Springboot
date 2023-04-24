@@ -30,7 +30,6 @@ public class TodoListController {
         int res = 0;
         try {
             res = todoListService.insertTodo(todoList);
-            System.out.println("新增todolist"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -52,7 +51,6 @@ public class TodoListController {
         List<TodoList> res = null;
         try {
             res = todoListService.queryTodo(account);
-            System.out.println("获取所有todolist" + res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -73,7 +71,6 @@ public class TodoListController {
         int res = 0;
         try {
             res = todoListService.deleteTodo(list_id);
-            System.out.println("deleteTodo"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -94,7 +91,6 @@ public class TodoListController {
         int res = 0;
         try {
             res = todoListService.updateTodo(list_id);
-            System.out.println("updateTodo"+res);
         } catch (Exception e) {
             System.out.println(e);
         }

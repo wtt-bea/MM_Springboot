@@ -11,13 +11,16 @@ public class Letter {
     private String stamp;
     private String recipient;
     private String context;
+    private String date;
+    private String name;
 
 
-    public Letter(int letter_id, String account, String stamp, String recipient, String context) {
+    public Letter(int letter_id, String account, String stamp, String recipient, String context, String date) {
         this.letter_id = letter_id;
         this.account = account;
         this.stamp = stamp;
         this.recipient = recipient;
         this.context = context;
+        this.date = date;
     }
 }

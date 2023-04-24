@@ -31,7 +31,6 @@ public class LikeController {
         int res = 0;
         try {
             res = likeService.insertLike(like);
-            System.out.println("like"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -54,7 +53,6 @@ public class LikeController {
         int res = 0;
         try {
             res = likeService.deleteLike(post_id, account);
-            System.out.println("deleteLike"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -75,7 +73,6 @@ public class LikeController {
         List<Like> res = null;
         try {
             res = likeService.queryLike(account);
-            System.out.println("querylike" + res);
         } catch (Exception e) {
             System.out.println(e);
         }

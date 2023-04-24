@@ -129,7 +129,6 @@ public class UserController {
     @RequestMapping("/user/planet")
     public CommonResult<String> planet(@RequestParam("account") String account) {
         User user = userService.queryPlanet(account);
-
         if(user != null) {
             return new CommonResult(200, "true",user.getPlanet());
         } else {
@@ -145,7 +144,6 @@ public class UserController {
     @RequestMapping("/user/userInfo")
     public CommonResult<String> userInfo(@RequestParam("account") String account) {
         User user = userService.queryuserInfo(account);
-
         if(user != null) {
             return new CommonResult(200, "true",user);
         } else {
@@ -167,11 +165,8 @@ public class UserController {
         // 获取当前时间并格式化设置随机地址
         String timeStamp = date;
         int data_1 = Integer.parseInt (String.valueOf(timeStamp.charAt(15)));
-        System.out.println(data_1);
         char data_2 = timeStamp.charAt(17);
-        System.out.println(data_2);
         char data_3 = timeStamp.charAt(18);
-        System.out.println(data_3);
         if(Objects.equals(planet, "焦虑星")){
             address = "焦虑星" + addresslist1[data_1] + data_2 + data_3 +"号";
         } else if (Objects.equals(planet, "倦怠星")) {
@@ -228,11 +223,8 @@ public class UserController {
         // 获取当前时间并格式化设置随机地址
         String timeStamp = date;
         int data_1 = Integer.parseInt (String.valueOf(timeStamp.charAt(15)));
-        System.out.println(data_1);
         char data_2 = timeStamp.charAt(17);
-        System.out.println(data_2);
         char data_3 = timeStamp.charAt(18);
-        System.out.println(data_3);
         if(Objects.equals(planet, "焦虑星")){
             address = "焦虑星" + addresslist1[data_1] + data_2 + data_3 +"号";
         } else if (Objects.equals(planet, "倦怠星")) {
@@ -266,7 +258,6 @@ public class UserController {
     @RequestMapping("/user/isClock")
     public CommonResult isClock(@RequestParam("account") String account) {
         User user = userService.isClock(account);
-        System.out.println("isClock"+user);
         if(user != null) {
             return new CommonResult(200, "true",user);
         } else {
@@ -284,7 +275,6 @@ public class UserController {
         int res = 0;
         try {
             res = userService.updateClock(account);
-            System.out.println("updateClock"+res);
         } catch (Exception e) {
             System.out.println(e);
         }

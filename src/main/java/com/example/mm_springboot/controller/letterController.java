@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 @RestController
@@ -30,17 +32,20 @@ public class letterController {
         letter.setStamp(stamp);
         letter.setRecipient(recipient);
         letter.setContext(context);
+        // 获取当前时间并格式化获取系统时间
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar now = Calendar.getInstance();
+        String currentTime = sf.format(now.getTime());
+        letter.setDate(currentTime);
         int res = 0;
         try {
             res = letterService.insertLetter(letter);
-            System.out.println("letter"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
         if(res == 1) {
             return new CommonResult(200, "true");
         } else {
-            System.out.println("jiqa"+res);
             return new CommonResult(401, "false");
         }
     }
@@ -55,7 +60,6 @@ public class letterController {
         List<Letter> res = null;
         try {
             res = letterService.queryLetter(recipient);
-            System.out.println("queryLetter" + res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -76,7 +80,6 @@ public class letterController {
         Letter res = null;
         try {
             res = letterService.queryOneLetter(account);
-            System.out.println("queryOneLetter" + res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -98,7 +101,6 @@ public class letterController {
         int res = 0;
         try {
             res = letterService.insertRecipient(letter_id, account);
-            System.out.println("insertRecipient"+res);
         } catch (Exception e) {
             System.out.println(e);
         }

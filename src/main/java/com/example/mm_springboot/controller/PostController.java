@@ -42,7 +42,6 @@ public class PostController {
         int res = 0;
         try {
             res = postService.insertPost(post);
-            System.out.println("jia"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -64,7 +63,6 @@ public class PostController {
         List<Post> res = null;
         try {
             res = postService.receive(planet);
-            System.out.println("ducedd" + res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -85,7 +83,6 @@ public class PostController {
         int res = 0;
         try {
             res = postService.postlike(post_id);
-            System.out.println("postlike"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -106,7 +103,6 @@ public class PostController {
         int res = 0;
         try {
             res = postService.postunlike(post_id);
-            System.out.println("postunlike"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -127,7 +123,6 @@ public class PostController {
         int res = 0;
         try {
             res = postService.postAddcomment(post_id);
-            System.out.println("postAddcomment"+res);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -148,7 +143,6 @@ public class PostController {
         List<Post> res = null;
         try {
             res = postService.postHome(account);
-            System.out.println("postHome" + res);
         } catch (Exception e) {
             System.out.println(e);
         }

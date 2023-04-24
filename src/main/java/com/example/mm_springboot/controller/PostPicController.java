@@ -70,7 +70,6 @@ public class PostPicController {
         List<Post_pic> res=null;
         try {
             res = post_picService.queryImage();
-            System.out.println(res);
         } catch (Exception e) {
             System.out.println(e);
         }
