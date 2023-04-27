@@ -16,7 +16,7 @@
         SELECT * FROM user WHERE account = #{account};
     </select>
     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="account">
-        INSERT INTO user(account, password, name, planet, address, age,Avatar, clock, clocktime) VALUES(#{account}, #{password}, #{name}, #{planet}, #{address}, #{age}, #{avatar}, 0, 0);
+        INSERT INTO user(account, password, name, planet, address, age,Avatar, clock, clocktime, score) VALUES(#{account}, #{password}, #{name}, #{planet}, #{address}, #{age}, #{avatar}, 0, 0, 0);
     </insert>
     <update id="updateUser" parameterType="User" useGeneratedKeys="true">
         UPDATE user SET name = #{name}, address = #{address}, planet = #{planet},Avatar = #{visitPath} WHERE account = #{account};
@@ -30,4 +30,10 @@
     <update id="updateClock" parameterType="User" useGeneratedKeys="true">
         UPDATE user SET clock = 1, clocktime = clocktime + 1 WHERE account = #{account};
     </update>
+    <update id="updateScore" parameterType="User" useGeneratedKeys="true">
+        UPDATE user SET score = #{score} WHERE account = #{account};
+    </update>
+    <select id="queryScore"  resultMap="BaseResult">
+        SELECT score FROM user WHERE account = #{account};
+    </select>
 </mapper>

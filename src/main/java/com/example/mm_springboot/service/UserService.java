@@ -19,4 +19,7 @@ public interface UserService {
     User isClock(String account);
 
     int updateClock(String account);
+
+    int updateScore(String account,int Score);
+    User queryScore(String account);
 }

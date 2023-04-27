@@ -284,4 +284,41 @@ public class UserController {
             return new CommonResult(401, "false");
         }
     }
+
+    /**
+     * 更改最高分数
+     * @param account
+     * @param score
+     * @return
+     */
+    @RequestMapping("/user/updateScore")
+    public CommonResult updateScore(@RequestParam("account") String account, @RequestParam("score") int score) {
+        int res = 0;
+        try {
+            res = userService.updateScore(account, score);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if(res == 1) {
+            return new CommonResult(200, "true");
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 查询最高分
+     * @param account
+     * @return
+     */
+    @RequestMapping("/user/queryScore")
+    public CommonResult queryScore(@RequestParam("account") String account) {
+        User res = userService.queryScore(account);
+        if(res != null) {
+            System.out.println("999"+res);
+            return new CommonResult(200, "true",res.getScore());
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
 }

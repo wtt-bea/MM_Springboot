@@ -16,4 +16,6 @@ public interface UserDao {
     int updateUsers(@Param("account") String account, @Param("name") String name, @Param("planet") String planet, @Param("address") String address);
     User isClock(@Param("account") String account);
     int updateClock(@Param("account") String account);
+    int updateScore(@Param("account") String account,@Param("score") int score);
+    User queryScore(@Param("account") String account);
 }

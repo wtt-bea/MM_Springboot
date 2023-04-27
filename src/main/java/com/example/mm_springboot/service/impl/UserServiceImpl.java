@@ -52,4 +52,14 @@ public class UserServiceImpl implements UserService {
         return userDao.updateClock(account);
     }
 
+    @Override
+    public int updateScore(String account, int score) {
+        return userDao.updateScore(account, score);
+    }
+
+    @Override
+    public User queryScore(String account) {
+        return userDao.queryScore(account);
+    }
+
 }
