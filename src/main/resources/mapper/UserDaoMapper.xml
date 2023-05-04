@@ -16,7 +16,7 @@
         SELECT * FROM user WHERE account = #{account};
     </select>
     <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="account">
-        INSERT INTO user(account, password, name, planet, address, age,Avatar, clock, clocktime, score) VALUES(#{account}, #{password}, #{name}, #{planet}, #{address}, #{age}, #{avatar}, 0, 0, 0);
+        INSERT INTO user(account, password, name, planet, address, age,Avatar, clock, clocktime, score, point) VALUES(#{account}, #{password}, #{name}, #{planet}, #{address}, #{age}, #{avatar}, 0, 0, 0,0);
     </insert>
     <update id="updateUser" parameterType="User" useGeneratedKeys="true">
         UPDATE user SET name = #{name}, address = #{address}, planet = #{planet},Avatar = #{visitPath} WHERE account = #{account};
@@ -36,4 +36,13 @@
     <select id="queryScore"  resultMap="BaseResult">
         SELECT score FROM user WHERE account = #{account};
     </select>
+    <select id="queryPoint"  resultMap="BaseResult">
+        SELECT point FROM user WHERE account = #{account};
+    </select>
+    <update id="addPoint" parameterType="User" useGeneratedKeys="true">
+        UPDATE user SET point = #{point}+point WHERE account = #{account};
+    </update>
+    <update id="subPoint" parameterType="User" useGeneratedKeys="true">
+        UPDATE user SET point = point-#{point} WHERE account = #{account};
+    </update>
 </mapper>

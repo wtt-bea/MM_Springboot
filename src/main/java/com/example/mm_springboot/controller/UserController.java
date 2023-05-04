@@ -315,8 +315,64 @@ public class UserController {
     public CommonResult queryScore(@RequestParam("account") String account) {
         User res = userService.queryScore(account);
         if(res != null) {
-            System.out.println("999"+res);
             return new CommonResult(200, "true",res.getScore());
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 查询最积分
+     * @param account
+     * @return
+     */
+    @RequestMapping("/user/getPoint")
+    public CommonResult queryPoint(@RequestParam("account") String account) {
+        User res = userService.queryPoint(account);
+        if(res != null) {
+            return new CommonResult(200, "true",res.getPoint());
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 增加积分
+     * @param account
+     * @param point
+     * @return
+     */
+    @RequestMapping("/user/addPoint")
+    public CommonResult addPoint(@RequestParam("account") String account, @RequestParam("point") int point) {
+        int res = 0;
+        try {
+            res = userService.addPoint(account, point);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if(res == 1) {
+            return new CommonResult(200, "true");
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 减少积分
+     * @param account
+     * @param point
+     * @return
+     */
+    @RequestMapping("/user/subPoint")
+    public CommonResult subPoint(@RequestParam("account") String account, @RequestParam("point") int point) {
+        int res = 0;
+        try {
+            res = userService.subPoint(account, point);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if(res == 1) {
+            return new CommonResult(200, "true");
         } else {
             return new CommonResult(401, "false");
         }

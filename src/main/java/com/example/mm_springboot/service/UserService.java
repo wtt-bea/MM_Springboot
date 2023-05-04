@@ -22,4 +22,7 @@ public interface UserService {
 
     int updateScore(String account,int Score);
     User queryScore(String account);
+    User queryPoint(String account);
+    int addPoint(String account,int point);
+    int subPoint(String account,int point);
 }

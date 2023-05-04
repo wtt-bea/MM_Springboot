@@ -62,4 +62,19 @@ public class UserServiceImpl implements UserService {
         return userDao.queryScore(account);
     }
 
+    @Override
+    public User queryPoint(String account) {
+        return userDao.queryPoint(account);
+    }
+
+    @Override
+    public int addPoint(String account, int point) {
+        return userDao.addPoint(account,point);
+    }
+
+    @Override
+    public int subPoint(String account, int point) {
+        return userDao.subPoint(account,point);
+    }
+
 }
