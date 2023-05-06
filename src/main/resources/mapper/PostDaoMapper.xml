@@ -30,4 +30,8 @@
     <update id="postAddcomment" parameterType="Post" useGeneratedKeys="true" keyProperty="post_id">
         UPDATE post SET comment_number = comment_number + 1 WHERE post_id = #{post_id}
     </update>
+
+    <select id="postSearch" resultType="Post">
+        SELECT u.name,p.* FROM user u, post p WHERE p.context LIKE '%${context}%' AND p.account = u.account ORDER BY p.date DESC;
+    </select>
 </mapper>

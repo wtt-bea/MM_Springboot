@@ -13,4 +13,6 @@ public interface PostService {
     int postlike(String post_id);
     int postunlike(String post_id);
     int postAddcomment(String post_id);
+
+    List<Post> postSearch(String context);
 }

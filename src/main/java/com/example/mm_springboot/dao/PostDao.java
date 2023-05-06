@@ -15,6 +15,6 @@ public interface PostDao {
     List<Post> postHome(@Param("account") String account);
     int postlike(@Param("post_id") String post_id);
     int postunlike(@Param("post_id") String post_id);
-
     int postAddcomment(@Param("post_id") String post_id);
+    List<Post> postSearch(@Param("context") String context);
 }

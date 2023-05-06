@@ -13,6 +13,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import static org.apache.logging.log4j.util.Strings.concat;
+
 @RestController
 public class PostController {
     @Resource
@@ -147,6 +149,27 @@ public class PostController {
             System.out.println(e);
         }
         if (res != null) {
+            return new CommonResult(200, "true", res);
+        }else{
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 模糊搜索
+     * @param context
+     * @return 搜索帖子
+     */
+    @RequestMapping("/post/postSearch")
+    public CommonResult postSearch(@RequestParam("context") String context) {
+        List<Post> res = null;
+        try {
+            res = postService.postSearch(context);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if (res != null) {
+            System.out.println("2"+res);
             return new CommonResult(200, "true", res);
         }else{
             return new CommonResult(401, "false");

@@ -37,4 +37,9 @@ public class PostServiceImpl implements PostService {
     public int postAddcomment(String post_id) {
         return postDao.postAddcomment(post_id);
     }
+
+    @Override
+    public List<Post> postSearch(String context) {
+        return postDao.postSearch(context);
+    }
 }
