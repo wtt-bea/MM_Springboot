@@ -25,4 +25,6 @@ public interface UserService {
     User queryPoint(String account);
     int addPoint(String account,int point);
     int subPoint(String account,int point);
+    User queryMood(String account);
+    int updateMood(String account, int mood);
 }

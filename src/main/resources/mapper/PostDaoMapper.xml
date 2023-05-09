@@ -20,7 +20,7 @@
     </update>
 
     <select id="receive" resultType="Post">
-        SELECT u.name,p.* FROM user u, post p WHERE p.account = u.account AND u.planet = #{planet} ORDER BY p.date DESC;
+        SELECT u.name,u.mood,p.* FROM user u, post p WHERE p.account = u.account AND u.planet = #{planet} ORDER BY p.date DESC;
     </select>
 
     <select id="postHome" resultType="Post">

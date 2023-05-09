@@ -13,6 +13,7 @@ public class Post {
     private int like_number;
     private int comment_number;
     private String name;
+    private int mood;
 
     public Post(String post_id, String account, String date, String context, int like_number,int comment_number) {
         this.post_id = post_id;

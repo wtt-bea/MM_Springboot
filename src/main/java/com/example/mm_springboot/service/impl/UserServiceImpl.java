@@ -77,4 +77,14 @@ public class UserServiceImpl implements UserService {
         return userDao.subPoint(account,point);
     }
 
+    @Override
+    public User queryMood(String account) {
+        return userDao.queryMood(account);
+    }
+
+    @Override
+    public int updateMood(String account, int mood) {
+        return userDao.updateMood(account, mood);
+    }
+
 }

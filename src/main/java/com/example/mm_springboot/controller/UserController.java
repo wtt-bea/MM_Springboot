@@ -377,4 +377,41 @@ public class UserController {
             return new CommonResult(401, "false");
         }
     }
+
+    /**
+     * 查询心情
+     * @param account
+     * @return
+     */
+    @RequestMapping("/user/queryMood")
+    public CommonResult queryMood(@RequestParam("account") String account) {
+        User res = userService.queryMood(account);
+        if(res != null) {
+            return new CommonResult(200, "true",res.getMood());
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
+
+    /**
+     * 新增心情
+     * @param account
+     * @param mood
+     * @return
+     */
+    @RequestMapping("/user/updateMood")
+    public CommonResult updateMood(@RequestParam("account") String account,@RequestParam("mood") int mood) {
+        int res = 0;
+        try {
+            res = userService.updateMood(account, mood);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println(res);
+        if(res == 1) {
+            return new CommonResult(200, "true");
+        } else {
+            return new CommonResult(401, "false");
+        }
+    }
 }

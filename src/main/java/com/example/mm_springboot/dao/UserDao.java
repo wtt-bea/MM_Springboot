@@ -21,4 +21,6 @@ public interface UserDao {
     User queryPoint(@Param("account") String account);
     int addPoint(@Param("account") String account,@Param("point") int point);
     int subPoint(@Param("account") String account,@Param("point") int point);
+    int updateMood(@Param("account") String account,@Param("mood") int mood);
+    User queryMood(@Param("account") String account);
 }

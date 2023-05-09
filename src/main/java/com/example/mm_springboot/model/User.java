@@ -18,8 +18,9 @@ public class User {
     private int clocktime;
     private int score;
     private int point;
+    private int mood;
 
-    public User(String account, String password, String name, String planet, String address, String age, String avatar, int clock, int clocktime, int score, int point) {
+    public User(String account, String password, String name, String planet, String address, String age, String avatar, int clock, int clocktime, int score, int point,int mood) {
         this.account = account;
         this.password = password;
         this.name = name;
@@ -31,5 +32,6 @@ public class User {
         this.clocktime = clocktime;
         this.score = score;
         this.point = point;
+        this.mood= mood;
     }
 }
