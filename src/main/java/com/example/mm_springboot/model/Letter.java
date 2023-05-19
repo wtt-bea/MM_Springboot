@@ -13,6 +13,7 @@ public class Letter {
     private String context;
     private String date;
     private String name;
+    private String address;
 
 
     public Letter(int letter_id, String account, String stamp, String recipient, String context, String date) {

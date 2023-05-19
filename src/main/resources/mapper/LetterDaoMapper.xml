@@ -14,7 +14,7 @@
     </insert>
 
     <select id="queryLetter" resultType="Letter">
-        SELECT l.*,u.name FROM user u, letter l WHERE l.account = u.account AND l.recipient = #{recipient} ORDER BY l.letter_id DESC;
+        SELECT l.*,u.name,u.address FROM user u, letter l WHERE l.account = u.account AND l.recipient = #{recipient} ORDER BY l.letter_id DESC;
     </select>
 
     <select id="queryOneLetter" resultType="Letter">
